@@ -1,0 +1,118 @@
+/*
+ Faça um programa, em linguagem C, que lê 5 frases, informadas pelo o usuário, de, no máximo, 50 caracteres cada uma e armazene-as em um arquivo. 
+Mas, antes de gravar cada frase no arquivo, é necessário converter todas as suas letras para maiúsculas.
+O nome do arquivo será fornecido, via teclado, pelo usuário.
+A seguir, feche o arquivo.
+Reabra o arquivo, para leitura, exibindo na tela todas as frases convertidas. 
+*/
+
+#include <stdio.h>
+#include <ctype.h>
+#include <locale>
+#include <string.h>
+
+int main(void) {
+
+	setlocale(LC_ALL, "PORTUGUESE");
+
+	struct Variaveis
+	{
+
+		char Nome_Arq[10];	//VETOR PARA GUARDAR O NOME
+		char F1[50], F2[50], F3[50], F4[50], F5[50];	//VETORES PARA GUARDAR CADA UMA DAS FRASES
+
+	};
+	struct Variaveis Struct;
+
+	FILE* Pont_arq;
+
+	printf("------------------------------------------------------------------------------------------ Gabriel Moreira, RU: 3329252");
+	printf("\n\n");
+
+	printf("Digite a primeria frase: ");
+	gets(Struct.F1);
+	printf("\n\n");
+
+	printf("Digite a segunda frase: ");
+	gets(Struct.F2);
+	printf("\n\n");
+
+	printf("Digite a terceira frase: ");	//Inserção das frases.
+	gets(Struct.F3);
+	printf("\n\n");
+	
+	printf("Digite a quarta frase: ");
+	gets(Struct.F4);
+	printf("\n\n");
+
+	printf("Digite a quinta frase: ");
+	gets(Struct.F5);
+	printf("\n");
+
+	printf("-----------------------------------------------------------------------------------------------------------------------");
+	printf("\n\n");
+
+	for (int i = 0; i < 50; i++)
+	{
+		Struct.F1[i] = toupper(Struct.F1[i]);
+	}
+
+	for (int i = 0; i < 50; i++)
+	{
+		Struct.F2[i] = toupper(Struct.F2[i]);
+	}
+
+	for (int i = 0; i < 50; i++)
+	{
+		Struct.F3[i] = toupper(Struct.F3[i]);	//Transformando as letras minúsculas em maiúsculas.
+	}
+
+	for (int i = 0; i < 50; i++)
+	{
+		Struct.F4[i] = toupper(Struct.F4[i]);
+	}
+
+	for (int i = 0; i < 50; i++)
+	{
+		Struct.F5[i] = toupper(Struct.F5[i]);
+	}
+
+
+	printf("1°: %s", Struct.F1);
+	printf("\n\n");
+
+	printf("2°: %s", Struct.F2);
+	printf("\n\n");
+
+	printf("3°: %s", Struct.F3);	//IMPRESSÃO DAS FRASES EM LETRAS MAIÚSCULAS .
+	printf("\n\n");
+
+	printf("4°: %s", Struct.F4);
+	printf("\n\n");
+
+	printf("5°: %s", Struct.F5);
+	printf("\n\n");
+	
+	printf("-----------------------------------------------------------------------------------------------------------------------");
+	printf("\n\n");
+
+	printf("Digite o nome do arquivo: ");
+	gets(Struct.Nome_Arq);
+	printf("\n");
+
+	strcat(Struct.Nome_Arq, ".txt");	//REALIZANDO A CONCATENAÇÃO DOS NOME CONTIDO NA VARIAVEM .NOME_ARQ COM O TEXTO ".txt".
+
+	Pont_arq = fopen(Struct.Nome_Arq, "a");
+	fprintf(Pont_arq, "\nFrases: \n\n");
+	fprintf(Pont_arq, "%s\n", Struct.F1);
+	fprintf(Pont_arq, "%s\n", Struct.F2);
+	fprintf(Pont_arq, "%s\n", Struct.F3);	//IMPRIMINDO AS FRASES NO ARQUIVO .TXT.
+	fprintf(Pont_arq, "%s\n", Struct.F4);
+	fprintf(Pont_arq, "%s\n", Struct.F5);
+
+	fclose(Pont_arq); 	//FECHANDO O ARQUIVO.
+
+	printf("------------------------------------------------------------------------------------------ Gabriel Moreira, RU: 3329252");
+	printf("\n\n");
+
+}
